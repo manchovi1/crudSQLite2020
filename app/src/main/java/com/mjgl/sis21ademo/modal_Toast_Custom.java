@@ -236,6 +236,7 @@ public class modal_Toast_Custom extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 //Toast.makeText(context, "Clic en Aceptar.", Toast.LENGTH_SHORT).show();
+                finish();
                 Intent intent = new Intent(context, MainActivity.class);
                 context.startActivity(intent);
                 //startActivity(intent);

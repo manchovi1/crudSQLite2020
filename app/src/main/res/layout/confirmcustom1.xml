@@ -83,7 +83,7 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="#A60B00"
-                    android:text="¿Confirme que desea borrar...?"/>
+                    android:text="¿Confirme que desea cerrar este ventana?"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

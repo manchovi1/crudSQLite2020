@@ -432,8 +432,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.uno:
                 showToast(1, "Acciones para guardar en BD");
-                alta(null);
                 //morph.hide();
+                alta(null);
                 break;
 
             case R.id.dos:
@@ -444,8 +444,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.tres:
                 showToast(3, "Acciones para buscar por descripciòn en BD");
-                consultapordescripcion();
                 //morph.hide();
+                consultapordescripcion();
                 break;
 
             case R.id.cuatro:
@@ -467,7 +467,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 morph.hide();
                 break;
-
         }
     }
 }

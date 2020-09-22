@@ -24,10 +24,10 @@ public class ConsultaSpinner extends AppCompatActivity{
     ConexionSQLite conexion = new ConexionSQLite(this);
     Dto datos = new Dto();
 
-    modal_Toast_Custom modal = new modal_Toast_Custom();
+   private FloatingActionMenu menu;
+   private FloatingActionButton item1, item2, item3;
 
-    private FloatingActionMenu fabmenu;
-    private FloatingActionButton item1, item2, item3;
+   modal_Toast_Custom modal = new modal_Toast_Custom();
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -67,30 +67,32 @@ public class ConsultaSpinner extends AppCompatActivity{
         tv_precio = (TextView)findViewById(R.id.tv_precio);
 
 
-        fabmenu = findViewById(R.id.menu_fab);
+        menu = findViewById(R.id.menu_fab);
         item1 = findViewById(R.id.item1);
         item2 = findViewById(R.id.item2);
         item3 = findViewById(R.id.item3);
 
-        fabmenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+
+        menu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
             @Override
             public void onMenuToggle(boolean opened) {
-                if(opened){
-                    Toast.makeText(ConsultaSpinner.this, "Abierto", Toast.LENGTH_SHORT).show();
+                if (opened){
+                    Toast.makeText(ConsultaSpinner.this, "Menu Abierto", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(ConsultaSpinner.this, "Cerrado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ConsultaSpinner.this, "Menu Cerrado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        fabmenu.setOnClickListener(new View.OnClickListener() {
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(fabmenu.isOpened()){
-                    fabmenu.close(true);
+                if(menu.isOpened()){
+                    menu.close(true);
                 }
             }
         });
+
 
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +100,12 @@ public class ConsultaSpinner extends AppCompatActivity{
                 /*finish();
                 Intent intent = new Intent(ConsultaSpinner.this, MainActivity.class);
                 startActivity(intent);*/
+
                 modal.dialogConfirmCustom2(ConsultaSpinner.this);
+
             }
         });
+
 
         item2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,14 +114,13 @@ public class ConsultaSpinner extends AppCompatActivity{
             }
         });
 
+
         item3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ConsultaSpinner.this, "Aplicaciòn cerrada.", Toast.LENGTH_SHORT).show();
                 finishAffinity();
             }
         });
-
 
         /*op1.setOnClickListener(onButtonClick());
         op2.setOnClickListener(onButtonClick());
