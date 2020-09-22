@@ -96,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
-                android:src="@drawable/abc_ic_menu_copy_mtrl_am_alpha" />
+                android:src="@drawable/ic_save" />
 
             <ImageView
                 android:id="@+id/dos"
@@ -104,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
-                android:src="@drawable/abc_ic_menu_paste_mtrl_am_alpha" />
+                android:src="@drawable/ic_search" />
 
             <ImageView
                 android:id="@+id/tres"
@@ -112,7 +112,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
-                android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha" />
+                android:src="@drawable/ic_search1" />
 
             <ImageView
                 android:id="@+id/cuatro"
@@ -120,8 +120,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
-                android:tooltipText="@string/error"
-                android:src="@drawable/abc_ic_menu_cut_mtrl_alpha" />
+                android:tooltipText="Elimininar"
+                android:src="@drawable/ic_delete" />
+
+            <ImageView
+                android:id="@+id/seis"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:tooltipText="Editar"
+                android:src="@drawable/ic_edit" />
 
             <ImageView
                 android:id="@+id/cinco"

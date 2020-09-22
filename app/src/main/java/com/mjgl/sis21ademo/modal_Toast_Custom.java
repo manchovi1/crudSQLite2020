@@ -235,14 +235,18 @@ public class modal_Toast_Custom extends AppCompatActivity{
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Clic en Aceptar.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Clic en Aceptar.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, MainActivity.class);
+                context.startActivity(intent);
+                //startActivity(intent);
             }
         });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Clic en Cancelar", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Clic en Cancelar", Toast.LENGTH_SHORT).show();
+                myDialog.dismiss();
             }
         });
 

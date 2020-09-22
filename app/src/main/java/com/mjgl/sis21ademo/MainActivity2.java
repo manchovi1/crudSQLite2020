@@ -83,13 +83,14 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         FloatingActionButton fab = findViewById(R.id.fab);
         morph = findViewById(R.id.fabtoolbar);
 
-        View uno, dos, tres, cuatro, cinco;
+        View uno, dos, tres, cuatro, cinco, seis;
 
         uno = findViewById(R.id.uno);
         dos = findViewById(R.id.dos);
         cuatro = findViewById(R.id.cuatro);
         tres = findViewById(R.id.tres);
         cinco = findViewById(R.id.cinco);
+        seis = findViewById(R.id.seis);
 
         fab.setOnClickListener(this);
         uno.setOnClickListener(this);
@@ -97,6 +98,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         tres.setOnClickListener(this);
         cuatro.setOnClickListener(this);
         cinco.setOnClickListener(this);
+        seis.setOnClickListener(this);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,7 +199,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             case R.id.uno:
                 showToast("Clic boton 1");
-                customWindow.dialogConfirm4(MainActivity2.this);
+                //customWindow.dialogConfirm4(MainActivity2.this);
                 morph.hide();
                 break;
 
@@ -218,6 +220,11 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             case R.id.cinco:
                 //showToast("Cerrando menu");
+                morph.hide();
+                break;
+
+            case R.id.seis:
+
                 morph.hide();
                 break;
 

@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#C5C5C5"
+    android:background="#A00505"
     tools:context=".ConsultaSpinner">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccione una opción"
-        android:layout_marginTop="25dp"
-        android:textAlignment="gravity"
-        android:textSize="18dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:textColor="#AD0505"
-        android:fontFamily="cursive"
-        />
-
-    <Spinner
-        android:id="@+id/sp_options"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="5dp"
-        android:drawSelectorOnTop="true"
-        android:spinnerMode="dropdown"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/estilos3spinner"
-        android:paddingLeft="15dp"
-        />
-    <!--android:spinnerMode="dialog"-->
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="25dp">
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seleccione una opción"
+            android:layout_marginTop="25dp"
+            android:textAlignment="gravity"
+            android:textSize="18dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/white"
+            android:fontFamily="cursive"
+            />
+
+        <Spinner
+            android:id="@+id/sp_options"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:drawSelectorOnTop="true"
+            android:spinnerMode="dropdown"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/estilos3spinner"
+            android:paddingLeft="15dp"
+            />
+        <!--android:spinnerMode="dialog"-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp">
 
         <TextView
             android:id="@+id/tv_cod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Código: "
-            android:textColor="#AD0505"
+            android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
@@ -56,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Descripción: "
-            android:textColor="#AD0505"
+            android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
@@ -68,14 +74,62 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Precio: "
-            android:textColor="#AD0505"
+            android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="50dp"
             />
 
-    </RelativeLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
 
 
-</LinearLayout>
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+
+        >
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/item1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            app:backgroundTint="@color/white"
+            app:borderWidth="0dp"
+            app:fab_label = "Retornar"
+            app:fab_size="mini"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person"
+            app:backgroundTint="@color/white"
+            app:borderWidth="0dp"
+            app:fab_label= "Autor"
+            app:fab_size="mini"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/item3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close4"
+            app:backgroundTint="@color/white"
+            app:borderWidth="0dp"
+            app:fab_label="Salir"
+            app:fab_size="mini"
+            />
+
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

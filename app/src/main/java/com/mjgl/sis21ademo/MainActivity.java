@@ -7,23 +7,28 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText et_codigo, et_descripcion, et_precio;
     private Button btn_guardar, btn_consultar1, btn_consultar2, btn_eliminar, btn_actualizar;
     private TextView tv_resultado;
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     Dto datos = new Dto();
     AlertDialog.Builder dialogo;
 
+    private FABToolbarLayout morph;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -90,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,16 +104,39 @@ public class MainActivity extends AppCompatActivity {
                 //         .setAction("Action", null).show();
                 ventanas.Search(MainActivity.this);
             }
-        });
+        });*/
+
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        morph = findViewById(R.id.fabtoolbar);
+
+        View uno, dos, tres, cuatro, cinco, seis;
+
+        uno = findViewById(R.id.uno);
+        dos = findViewById(R.id.dos);
+        cuatro = findViewById(R.id.cuatro);
+        tres = findViewById(R.id.tres);
+        cinco = findViewById(R.id.cinco);
+        seis = findViewById(R.id.seis);
+
+        fab.setOnClickListener(this);
+        uno.setOnClickListener(this);
+        dos.setOnClickListener(this);
+        tres.setOnClickListener(this);
+        cuatro.setOnClickListener(this);
+        cinco.setOnClickListener(this);
+        seis.setOnClickListener(this);
+
+
 
         et_codigo = (EditText) findViewById(R.id.et_codigo);
         et_descripcion = (EditText) findViewById(R.id.et_descripcion);
         et_precio = (EditText) findViewById(R.id.et_precio);
         btn_guardar = (Button) findViewById(R.id.btn_guardar);
-        btn_consultar1 = (Button) findViewById(R.id.btn_consultar1);
-        btn_consultar2 = (Button) findViewById(R.id.btn_consultar2);
-        btn_eliminar = (Button) findViewById(R.id.btn_eliminar);
-        btn_actualizar = (Button) findViewById(R.id.btn_actualizar);
+        //btn_consultar1 = (Button) findViewById(R.id.btn_consultar1);
+        //btn_consultar2 = (Button) findViewById(R.id.btn_consultar2);
+        //btn_eliminar = (Button) findViewById(R.id.btn_eliminar);
+        //btn_actualizar = (Button) findViewById(R.id.btn_actualizar);
        // tv_resultado = (TextView) findViewById(R.id.tv_resultado);
 
         String senal = "";
@@ -132,9 +161,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }catch (Exception e){
 
-        }
-
     }
+}
 
 
     private void confirmacion(){
@@ -239,6 +267,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     public void mensaje (String mensaje){
         Toast.makeText(this, ""+mensaje, Toast.LENGTH_SHORT).show();
     }
@@ -251,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void consultaporcodigo(View v) {
+    public void consultaporcodigo() {
         if(et_codigo.getText().toString().length()==0){
             et_codigo.setError("Campo obligatorio");
             inputEt = false;
@@ -277,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void consultapordescripcion(View v) {
+    public void consultapordescripcion() {
         if(et_descripcion.getText().toString().length()==0){
             et_descripcion.setError("Campo obligatorio");
             inputEd = false;
@@ -305,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void bajaporcodigo(View v) {
+    public void bajaporcodigo() {
 
         if(et_codigo.getText().toString().length()==0){
             et_codigo.setError("campo obligatorio");
@@ -328,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void modificacion(View v) {
+    public void modificacion() {
 
         if(et_codigo.getText().toString().length()==0){
             et_codigo.setError("campo obligatorio");
@@ -357,4 +387,87 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void showToast(int opcion, String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_layout, (ViewGroup) findViewById(R.id.toast_root));
+
+        TextView toastText = layout.findViewById(R.id.toast_text);
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+
+        toastText.setText(message);
+        if(opcion == 1){
+            toastImage.setImageResource(R.drawable.ic_save);
+        }else if(opcion == 2){
+            toastImage.setImageResource(R.drawable.ic_search);
+        }else if(opcion == 3){
+            toastImage.setImageResource(R.drawable.ic_search1);
+        }else if(opcion == 4){
+            toastImage.setImageResource(R.drawable.ic_delete);
+        }else if(opcion == 5){
+            toastImage.setImageResource(R.drawable.ic_edit);
+        }
+
+
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+
+        toast.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.fab) {
+            morph.show();
+        }//else if(v.getId() == R.id.uno){
+
+        //}
+
+        //morph.hide();
+
+        switch (v.getId()){
+
+            case R.id.uno:
+                showToast(1, "Acciones para guardar en BD");
+                alta(null);
+                //morph.hide();
+                break;
+
+            case R.id.dos:
+                showToast(2, "Busqueda por còdigo");
+                ventanas.Search(MainActivity.this);
+                //morph.hide();
+                break;
+
+            case R.id.tres:
+                showToast(3, "Acciones para buscar por descripciòn en BD");
+                consultapordescripcion();
+                //morph.hide();
+                break;
+
+            case R.id.cuatro:
+                showToast(4, "Acciones para elimininar de BD");
+                bajaporcodigo();
+                //morph.hide();
+                break;
+
+            case R.id.cinco:
+                morph.hide();
+                break;
+
+            case R.id.seis:
+                showToast(5, "Acciones para modificar de BD");
+                modificacion();
+                //morph.hide();
+                break;
+
+            default:
+                morph.hide();
+                break;
+
+        }
+    }
 }
