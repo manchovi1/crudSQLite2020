@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/ic_icono3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".consulta_recyclerView1">
+
+
+
+        </activity>
+        <activity android:name=".consulta_recyclerView" />
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".DetalleArticulos" />
         <activity
             android:name=".ListViewArticulos"

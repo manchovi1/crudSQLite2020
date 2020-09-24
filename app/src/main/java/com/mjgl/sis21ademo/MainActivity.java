@@ -218,6 +218,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent listViewActivity = new Intent(MainActivity.this, ListViewArticulos.class);
             startActivity(listViewActivity);
             return true;
+        }else if(id == R.id.action_listAllArticulos){
+            Intent listViewActivity = new Intent(MainActivity.this, consulta_recyclerView.class);
+            startActivity(listViewActivity);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

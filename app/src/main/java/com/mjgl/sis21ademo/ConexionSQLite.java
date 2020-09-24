@@ -10,11 +10,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.DecorToolbar;
 //import android.app.AlertDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class ConexionSQLite extends SQLiteOpenHelper {
     boolean estadoDelete = true;
@@ -277,7 +279,6 @@ public class ConexionSQLite extends SQLiteOpenHelper {
                 dialog.show();
 
 
-
             }else{
                 Toast.makeText(context, "No hay resultados encontrados para la busqueda especificada.", Toast.LENGTH_SHORT).show();
             }
@@ -354,6 +355,10 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         return articulosList;
     }
 
+
+
+
+
     public ArrayList<String> obtenerListaArticulos() {
         listaArticulos = new ArrayList<String>();
         //listaArticulos = new ArrayList<>();
@@ -367,10 +372,6 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         return listaArticulos;
     }
     //Fin del Spinner.
-
-
-    //Inicio del Método para crear lista de datos de la BD en el ListView.
-
 
 
 
@@ -412,5 +413,28 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         //return articulosList;
         return listaArticulos;
     }
+
+
+
+
+    //Metodo para consulta general de la tabla articulos y mostrar en un RecyclerView
+    public List<Dto> mostrarArticulos(){
+        SQLiteDatabase bd = this.getReadableDatabase();
+        Cursor cursor = bd.rawQuery("SELECT * FROM articulos order by codigo desc", null);
+        List<Dto> articulos = new ArrayList<>();
+
+        if(cursor.moveToFirst()){
+            do{
+                articulos.add(new Dto(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2)));
+            }while (cursor.moveToNext());
+        }
+
+        return articulos;
+
+    }
+
+
+
+
 
 }
